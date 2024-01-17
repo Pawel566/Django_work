@@ -1,0 +1,21 @@
+{% extends '/book_room.html' %}
+
+{% block content %}
+  <h2>Lista dostępnych sal</h2>
+  {% if rooms %}
+    <ul>
+      {% for room in rooms %}
+        <li>
+          <a href="/room/{{ room.id }}/">{{ room.name }}</a> -
+          Pojemność: {{ room.capacity }},
+          {% if room.projector_availability %}Rzutnik dostępny{% else %}Brak rzutnika{% endif %}
+          <a href="/room/modify/{{ room.id }}/"><button>Edytuj</button></a>
+          <a href="/room/delete/{{ room.id }}/"><button>Usuń</button></a>
+          <a href="/room/reserve/{{ room.id }}/"><button>Zarezerwuj</button></a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Brak dostępnych sal.</p>
+  {% endif %}
+{% endblock %}

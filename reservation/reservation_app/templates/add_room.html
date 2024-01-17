@@ -1,0 +1,18 @@
+{% extends 'book_room.html' %}
+
+{% block content %}
+  <h2>Dodaj nową salę</h2>
+  <form method="post" action="{% url 'add_room' %}">
+    {% csrf_token %}
+    <label for="name">Nazwa sali:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="capacity">Pojemność sali:</label>
+    <input type="number" id="capacity" name="capacity" required min="1"><br>
+
+    <label for="projector_availability">Dostępność rzutnika:</label>
+    <input type="checkbox" id="projector_availability" name="projector_availability"><br>
+
+    <input type="submit" value="Dodaj salę">
+  </form>
+{% endblock %}
